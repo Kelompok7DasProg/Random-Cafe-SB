@@ -1,0 +1,5 @@
+MVP Random Cafe
+	- User bisa melihat menu dan promo yang tersedia
+	- User bisa masukin input nama dan nomer meja
+	- User bisa pilih menu ( makanan & minuman )
+	- User bisa cancel pesanan jika belum submit pembayaran
