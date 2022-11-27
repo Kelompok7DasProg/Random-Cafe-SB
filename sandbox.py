@@ -1,36 +1,16 @@
-listMakanan = [
-  {
-    'No': '1', 
-    'Nama':'Nasigoreng', 
-    'Harga': 15000
-  },
-  {
-    'No': '2', 
-    'Nama':'Bakso', 
-    'Harga': 20000
-  },
-  {
-    'No': '3', 
-    'Nama': 'Pizza', 
-    'Harga': 50000
-  },
-  {
-    'No': '4', 
-    'Nama': 'Bubur Ayam', 
-    'Harga': 10000
-  }
-]
+from rich.table import Table
+from rich.console import Console
+from readMenu import menus
 
-def selectMenu(listMenu, no):
-  selectedMenu = ''
-  for menu in listMenu:
-    noMenu = menu.get('No')
-    # print(noMenu)
-    # print(menu)
-    if noMenu == no:
-      selectedMenu = menu
+table = Table(title="Menu",)
+
+headers = list(menus[0].keys())
+
+for header in headers:
+  table.add_column(header, justify="left", style="cyan")
   
-  return selectedMenu
-
-menuOrder = selectMenu(listMakanan, '1')
-print(menuOrder)
+for row in menus:
+  table.add_row(row['No'], row['Nama'], row['Harga'], row['Type'])
+  
+console = Console()
+console.print(table)
