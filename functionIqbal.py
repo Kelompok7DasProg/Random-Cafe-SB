@@ -44,18 +44,18 @@ def cancelPesanan(listPembelian):
         del listPembelian[i]
         break
 
-def deleteKey(listToDelete, key):
+def deleteKey(listToDelete, listOfKeyToDelete):
   
   listCopy = deepcopy(listToDelete)
-  
-  for listDict in listCopy:
-    del listDict[key]
+  for key in listOfKeyToDelete:
+    for listDict in listCopy:
+      del listDict[key]
   
   return listCopy
 
 def pesanSekali(listMenu, listPembelian):
   userOrder = {}
-  tablelize(listMenu)
+  tablelize(listMenu, 'rounded_grid')
   
   pilihanUser = input('Masukan kode menu: ')
   
@@ -99,7 +99,7 @@ def pesan(listMenu, listPembelian):
     orderLagi = restrictedInput('Ingin pesan lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
   
 def batalPesan(listPembelian):
-  tablelize(listPembelian)
+  tablelize(listPembelian, 'rounded_grid')
   cancelPesanan(listPembelian)
   print('Pesanan dibatalkan !')
   
@@ -112,7 +112,7 @@ def batalPesan(listPembelian):
 def randomateOrder(listMenu, listPembelian):
   tryAgainPrice = 0
   
-  tablelize(listMenu)
+  tablelize(listMenu, 'rounded_grid')
   pilihanUser = input('Masukan kode menu: ')
   validateUser = validateUserSelection(listMenu, pilihanUser.upper())
   
@@ -170,12 +170,12 @@ def loadingRandomate():
       progress_bar(total_iteration, i, 15, ">")
       time.sleep(0.01)
 
-def tablelize(tableObject):
+def tablelize(tableObject, gridStyle):
   header = tableObject[0].keys()
   rows = []
   for data in tableObject:
     rows.append(data.values())
-  print(tabulate.tabulate(rows, header, tablefmt="rounded_grid"))
+  print(tabulate.tabulate(rows, header, tablefmt=gridStyle))
   
 def showMenu(menu):
   makanan = []
@@ -187,8 +187,8 @@ def showMenu(menu):
     else :
       minuman.append(data)
   
-  tablelize(makanan)
-  tablelize(minuman)
+  tablelize(makanan, 'rounded_grid')
+  tablelize(minuman, 'rounded_grid')
   
 def validateUserSelection(listMenu, userSelection):
   listOfCode = []
