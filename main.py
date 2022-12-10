@@ -58,10 +58,18 @@ while confirmOrder.lower() != 'y':
       print("Pesanan kamu sudah di batalkan. Terima kasih sudah berkunjung")
       exit()
   
-  print('list pesanan sekarang: ')
-  tablelize(listPembelian, 'rounded_grid')
+  if len(listPembelian) == 0:
+    print('Pesanan anda sudah kosong')
+    pesananKosong = restrictedInput('Ingin pesan lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
+    if(pesananKosong == 'y'):
+      pesan(menus, listPembelian)
+    else:
+      print('Pesanan kamu sudah di batalkan. Terima kasih sudah berkunjung')
+  else:
+    print('list pesanan sekarang: ')
+    tablelize(listPembelian, 'rounded_grid')
 
-  confirmOrder = restrictedInput('Confirm Order? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
+  confirmOrder = restrictedInput('Konfirmasi Order? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
 
 total = 0
 for data in listPembelian:

@@ -45,4 +45,5 @@ def pesanSekali(listMenu, listPembelian):
   userOrder['Total harga'] = int(menuUser['Harga']) * quantityPembelian
   userOrder['isRandom'] = False
   
+  
   listPembelian.append(userOrder)
