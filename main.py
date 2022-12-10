@@ -1,4 +1,7 @@
-from functionIqbal import deleteKey, pesan, restrictedInput, batalPesan, tablelize, showMenu, invoice
+from functionToric import pesan
+from functionPutri import batalPesan
+from functionAlfa import restrictedInput, tablelize, deleteKey, invoice
+from functionFajar import showMenu
 from readMenu import menus
 
 print("*" * 50)
@@ -35,7 +38,7 @@ confirmOrder = restrictedInput('Confirm Order? Y/N: ', 'Input yang tersedia hany
 
 while confirmOrder.lower() != 'y':
   print(f'''1. Ingin pesan lagi
-2. Ingin betalkan salah satu pesanan
+2. Ingin batalkan salah satu pesanan
 3. Ingin batalkan semua pesanan''')
   
   userSelectNo = restrictedInput('Masukan pilihan (1/2/3): ', 'Input yang tersedia hanya 1/2/3 !!', ['1', '2', '3'], str)
