@@ -80,7 +80,7 @@ def pesanSekali(listMenu, listPembelian):
   listPembelian.append(userOrder)
 
 def pesan(listMenu, listPembelian):
-  randomateOffer = restrictedInput('Ingin menggunakan fitur randomate? Y/N', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
+  randomateOffer = restrictedInput('Ingin menggunakan fitur randomate? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
   
   if randomateOffer == 'y':
     randomateOrder(listMenu, listPembelian)
@@ -90,7 +90,7 @@ def pesan(listMenu, listPembelian):
   orderLagi = restrictedInput('Ingin pesan lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
 
   while orderLagi == 'y':
-    randomateOffer = restrictedInput('Ingin menggunakan fitur randomate? Y/N', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
+    randomateOffer = restrictedInput('Ingin menggunakan fitur randomate? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
     if randomateOffer == 'y':
       randomateOrder(listMenu, listPembelian)
     else :
@@ -199,3 +199,36 @@ def validateUserSelection(listMenu, userSelection):
     return False
   else:
     return True
+
+def invoice(nama, noMeja, invoice_data, total):
+  company_name = 'Random Cafe, inc.'
+  company_address = 'Margonda Raya, No.12'
+  company_city = 'Depok, Indonesia'
+
+  print('*' * 50)
+  print('\t\tINVOICE RANDOM CAFE')
+  print('=' * 50)
+  print('\t\t{}'.format(company_name))
+  print('\t\t{}'.format(company_address))
+  print('\t\t{}'.format(company_city))
+  # print a line between sections
+  print('=' * 50)
+  print("-" * 50)
+  print(" ")
+  print("Nomor Meja: " + noMeja)
+  print("Nama Pelanggan: "+ nama)
+  print(" ")
+  print("-" * 50)
+  print(" ")
+  print("Ini rincian pesanan mu ya: ")
+  tablelize(invoice_data, "simple")
+  print(" ")
+
+  print("-" * 50)
+  print("Total Bayar       Rp. "+ str(total))
+  print("-" * 50)
+  print(" ")
+  print("Terima kasih "+nama+"!")
+  print("Harap tunggu. Pesanan Kamu sedang kami siapkan. ")
+  print("Have a great day!")
+  print('*' * 50)
