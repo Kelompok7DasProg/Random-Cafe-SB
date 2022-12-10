@@ -42,6 +42,7 @@ def cancelPesanan(listPembelian):
         print('Pesanan yang dari randomate tidak bisa dibatalkan !!!')
       else :
         del listPembelian[i]
+        print('Pesanan dibatalkan')
         break
 
 def deleteKey(listToDelete, listOfKeyToDelete):
@@ -55,7 +56,6 @@ def deleteKey(listToDelete, listOfKeyToDelete):
 
 def pesanSekali(listMenu, listPembelian):
   userOrder = {}
-  tablelize(listMenu, 'rounded_grid')
   
   pilihanUser = input('Masukan kode menu: ')
   
@@ -101,18 +101,16 @@ def pesan(listMenu, listPembelian):
 def batalPesan(listPembelian):
   tablelize(listPembelian, 'rounded_grid')
   cancelPesanan(listPembelian)
-  print('Pesanan dibatalkan !')
   
   batalLagiGa = restrictedInput('Ingin batalkan pesanan lagi? Y/N: ', 'Input yang tersedia hanya Y/N', ['y', 'n'], str)
   
   while batalLagiGa == 'y':
     cancelPesanan(listPembelian)
+    tablelize(listPembelian, 'rounded_grid')
     batalLagiGa = restrictedInput('Ingin batalkan pesanan lagi? Y/N: ', 'Input yang tersedia hanya Y/N', ['y', 'n'], str)
   
 def randomateOrder(listMenu, listPembelian):
   tryAgainPrice = 0
-  
-  tablelize(listMenu, 'rounded_grid')
   pilihanUser = input('Masukan kode menu: ')
   validateUser = validateUserSelection(listMenu, pilihanUser.upper())
   
@@ -130,6 +128,7 @@ def randomateOrder(listMenu, listPembelian):
   randomatePrice = randomPrice()
   print(f'Menu {namaMenu} harga persatuannya menjadi {randomatePrice}')
   confirmUser = restrictedInput('Ingin coba lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
+  print('\n')
   
   while confirmUser == 'y':
     tryAgainPrice += 5000
@@ -138,6 +137,7 @@ def randomateOrder(listMenu, listPembelian):
     print(f'Menu {namaMenu} harga persatuannya menjadi {randomatePrice}')
     print(f'Harga tambahan karena sudah mencoba lagi: {tryAgainPrice}')
     confirmUser = restrictedInput('Ingin coba lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
+    print('\n')
   
   print(f'final harga satuan untuk {namaMenu} adalah {randomatePrice}')
   
@@ -148,7 +148,7 @@ def randomateOrder(listMenu, listPembelian):
   userOrder['Menu'] = menuUser['Nama']
   userOrder['Harga'] = randomatePrice
   userOrder['Quantity'] = quantityPembelian
-  userOrder['Total harga'] = (randomatePrice + tryAgainPrice) * quantityPembelian
+  userOrder['Total harga'] = (randomatePrice * quantityPembelian) + tryAgainPrice
   userOrder['isRandom'] = True
   
   listPembelian.append(userOrder)

@@ -45,21 +45,19 @@ while confirmOrder.lower() != 'y':
   elif userSelectNo == '2':
     batalPesan(listPembelian)
   elif userSelectNo == '3':
-    listPembelian.clear()
-    print("Pesanan kamu sudah di batalkan. Terima kasih sudah berkunjung")
-    exit()
+    for pembelian in listPembelian:
+      if pembelian['isRandom'] == True:
+        print('Pesanan yang telah anda buat tidak bisa dibatalkan karena terdapat pesanan dari fitur randomate')
+        print('Anda hanya bisa membatalkan pesanan yang anda pesan secara normal')
+        break
+    else :
+      listPembelian.clear()
+      print("Pesanan kamu sudah di batalkan. Terima kasih sudah berkunjung")
+      exit()
   
-  print(f'Jumlah array: {len(listPembelian)}')
-  print(listPembelian)
-  
-  if len(listPembelian) == 0:
-    print('Pesanan anda telah kosong')
-  else:
-    print('list pesanan sekarang: ')
-    tablelize(listPembelian, 'rounded_grid')
-  
-  
-  
+  print('list pesanan sekarang: ')
+  tablelize(listPembelian, 'rounded_grid')
+
   confirmOrder = restrictedInput('Confirm Order? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
 
 total = 0
