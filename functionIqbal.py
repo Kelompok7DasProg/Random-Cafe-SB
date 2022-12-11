@@ -3,8 +3,6 @@ import time
 from functionAlfa import restrictedInput, selectMenu
 from functionFajar import validateUserSelection
 
-
-
 def randomPrice():
   randomInt = random.randint(5000, 40000)
   
@@ -20,7 +18,6 @@ def randomateOrder(listMenu, listPembelian):
     
     pilihanUser = input('Masukan kode menu: ')
     validateUser = validateUserSelection(listMenu, pilihanUser.upper())
-  
   
   menuUser = selectMenu(listMenu, pilihanUser.upper())
   namaMenu = menuUser['Nama']
@@ -68,5 +65,5 @@ def progress_bar(t_i, c_i, bar_length, fill):
 def loadingRandomate(): 
   total_iteration = 100
   for i in range(total_iteration + 1):
-      progress_bar(total_iteration, i, 15, ">")
+      progress_bar(total_iteration, i, 30, ">")
       time.sleep(0.01)
