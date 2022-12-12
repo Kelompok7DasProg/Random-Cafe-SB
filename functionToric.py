@@ -1,9 +1,14 @@
 from functionIqbal import randomateOrder
 from functionAlfa import restrictedInput, selectMenu
-from functionFajar import validateUserSelection
+from functionFajar import validateUserSelection, showMenu
 
 def pesan(listMenu, listPembelian):
+  # Tampilin menu
+  showMenu(listMenu)
+  
   # Tanya user ingin pake fitur randomate apa engga
+  print('Peringatan !!!')
+  print('Menu yang sudah dipesan melalui fitur randomate tidak bisa di batalkan !!!')
   randomateOffer = restrictedInput('Ingin menggunakan fitur randomate? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
   
   if randomateOffer == 'y':
@@ -21,8 +26,10 @@ def pesan(listMenu, listPembelian):
     randomateOffer = restrictedInput('Ingin menggunakan fitur randomate? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
     if randomateOffer == 'y':
       randomateOrder(listMenu, listPembelian)
+      print('\n')
     else :
       pesanSekali(listMenu, listPembelian)
+      print('\n')
     orderLagi = restrictedInput('Ingin pesan lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
     
 def pesanSekali(listMenu, listPembelian):  
