@@ -27,7 +27,6 @@ noMeja = input('Masukan nomer meja: ')
 namaPelanggan = input('Atas nama: ')
 
 listPembelian = []
-showMenu(menus)
 
 pesan(menus, listPembelian)
 

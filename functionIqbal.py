@@ -11,6 +11,7 @@ def randomPrice():
 def randomateOrder(listMenu, listPembelian):
   tryAgainPrice = 0
   pilihanUser = input('Masukan kode menu: ')
+  print('\n')
   validateUser = validateUserSelection(listMenu, pilihanUser.upper())
   
   while validateUser != True:
@@ -25,6 +26,7 @@ def randomateOrder(listMenu, listPembelian):
   loadingRandomate()
   randomatePrice = randomPrice()
   print(f'Menu {namaMenu} harga persatuannya menjadi {randomatePrice}')
+  print('Anda bisa mencoba untuk mengundi harga lagi, tapi akan dikenakan biaya tambahan sebesar 5000 untuk setiap percobaannya')
   confirmUser = restrictedInput('Ingin coba lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
   print('\n')
   
@@ -37,7 +39,7 @@ def randomateOrder(listMenu, listPembelian):
     confirmUser = restrictedInput('Ingin coba lagi? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
     print('\n')
   
-  print(f'final harga satuan untuk {namaMenu} adalah {randomatePrice}')
+  print(f'Harga satuan {namaMenu} menjadi {randomatePrice}')
   
   quantityPembelian = int(input('Jumlah pembelian: '))
   
