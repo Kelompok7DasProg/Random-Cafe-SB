@@ -34,9 +34,9 @@ pesan(menus, listPembelian)
 print('\n')
 tablelize(listPembelian, 'rounded_grid')
 
-confirmOrder = restrictedInput('Confirm Order? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
+confirmOrder = restrictedInput('Konfirmasi Order? Y/N: ', 'Input yang tersedia hanya Y/N !!', ['y','n'], str)
 
-while confirmOrder.lower() != 'y':
+while confirmOrder.lower() == 'n':
   print(f'''1. Ingin pesan lagi
 2. Ingin batalkan salah satu pesanan
 3. Ingin batalkan semua pesanan''')
